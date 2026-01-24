@@ -13,13 +13,13 @@
                 audioBtn.classList.add('playing');
                 audioIcon.classList.remove('fa-music');
                 audioIcon.classList.add('fa-pause');
-                audioText.innerText = 'Pause Intro';
+                audioText.innerText = 'Pause IUB Anthem';
             } else {
                 audio.pause();
                 audioBtn.classList.remove('playing');
                 audioIcon.classList.remove('fa-pause');
                 audioIcon.classList.add('fa-music');
-                audioText.innerText = 'Play Intro';
+                audioText.innerText = 'Play IUB Anthem';
             }
         });
 
@@ -28,7 +28,7 @@
             audioBtn.classList.remove('playing');
             audioIcon.classList.remove('fa-pause');
             audioIcon.classList.add('fa-music');
-            audioText.innerText = 'Play Intro';
+            audioText.innerText = 'Play IUB Anthem';
         });
 
         // Dark Mode Toggle
