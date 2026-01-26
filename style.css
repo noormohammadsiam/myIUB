@@ -52,6 +52,33 @@
             color: var(--accent-color);
         }
 
+
+        /* ফিক্সড অংশ */
+        .sidebar-fixed-part {
+            flex-shrink: 0;
+            padding: 60px 30px 0 30px; /* নিচে প্যাডিং ০ রাখা হয়েছে কারণ social-icons-top প্যাডিং হ্যান্ডেল করবে */
+            background: var(--bg-sidebar);
+            text-align: center;
+            z-index: 5;
+        }
+        
+        /* স্ক্রল অংশ */
+        .sidebar-scroll-part {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 10px 30px 40px 30px;
+        }
+        
+        /* স্ক্রলবার হাইড বা চিকন করার জন্য */
+        .sidebar-scroll-part::-webkit-scrollbar {
+            width: 4px;
+        }
+        .sidebar-scroll-part::-webkit-scrollbar-thumb {
+            background-color: var(--border-color);
+            border-radius: 10px;
+        }
+
+
         /* --- Sidebar Navigation --- */
         .sidebar {
             position: fixed;
@@ -63,25 +90,11 @@
             border-right: 1px solid var(--border-color);
             z-index: 1000;
             transition: transform 0.3s ease;
+            
+            /* নতুন যোগ করা হয়েছে */
+            display: flex;
+            flex-direction: column;
             overflow: hidden; 
-        }
-
-        .sidebar-scroll-content {
-            height: 100%;
-            overflow-y: auto;
-            padding: 40px 30px;
-            padding-top: 60px; 
-        }
-
-        .sidebar-scroll-content::-webkit-scrollbar {
-            width: 6px;
-        }
-        .sidebar-scroll-content::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .sidebar-scroll-content::-webkit-scrollbar-thumb {
-            background-color: var(--border-color);
-            border-radius: 20px;
         }
 
         /* Dark Mode Button - Floating Fixed Position */
