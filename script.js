@@ -100,24 +100,36 @@
             });
         });
 
-        // Active Link Highlighter on Scroll
+// Active Link Highlighter on Scroll with Auto-Scroll in Sidebar
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.nav-links a');
+        const sidebarMenu = document.querySelector('.sidebar-scroll-part'); // আমাদের স্ক্রল কন্টেইনার
 
         window.addEventListener('scroll', () => {
             let current = '';
+            
+            // বর্তমান সেকশন খুঁজে বের করা
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
+                // -200 পিক্সেল অফসেট রাখা হয়েছে যাতে একটু আগেই ডিটেক্ট করে
                 if(scrollY >= (sectionTop - 200)) {
                     current = section.getAttribute('id');
                 }
             });
 
+            // লিঙ্কগুলোতে অ্যাক্টিভ ক্লাস বসানো এবং সাইডবার স্ক্রল করা
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if(link.getAttribute('href').includes(current)) {
                     link.classList.add('active');
+                    
+                    // --- এই অংশটি নতুন যোগ করা হয়েছে ---
+                    // যদি লিঙ্কটি দেখা না যায়, তবে সাইডবার অটোমেটিক স্ক্রল করে দেখাবে
+                    if(sidebarMenu) {
+                        // 'nearest' অপশনটি জরুরি, এটি জাম্প না করে স্মুথলি এলিমেন্টটিকে ভিউতে আনে
+                        link.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
                 }
             });
         });
